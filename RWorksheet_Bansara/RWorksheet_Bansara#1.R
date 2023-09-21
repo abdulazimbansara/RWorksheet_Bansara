@@ -55,16 +55,75 @@ one_onethous <- seq(1,1000)
 one_onethous
 
 #a. how many data points from 8.1 to 8.4
-#8.1 data points
+#8.1a data points
 datapts_1 <- length(one_100)
 datapts_1
 
-#8.2 data points
+#8.2a data points
 datapts_2 <- length(twenty_sixty)
 datapts_2
 
-#8.3 data points
+#8.3a data points
 datapts_3 <- length(twentysixty_mean)
-datapts
+datapts_3 
 
-  
+#8.4a data points
+datapts_4 <- length(fifty1_nine1)
+datapts_4
+
+#8.5c maximum points until 10
+nmax <- seq (1,10)
+nmax2 <- max(nmax)
+nmax2
+
+#9
+newone_100 <- seq(100)
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+newone_100 <- c(newone_100)
+
+#10 generate backwards of the integers from 1 to 100
+reverse_one100 <- seq(100,1)
+reverse_one100
+
+#11 List all the natural numbers below 25 that are multiples of 3 or 5
+natural_num <- seq(24,1)
+natural_num2<- Filter(function(i) { all(i %% 3 == 0 | i %% 5 == 0) != 0 }, seq(24,1))
+natural_num2<- c(natural_num2)
+natural_sum <- sum (natural_num2)
+natural_sum
+
+#11a data points from 10 to 11
+ten_11dtps <- length(reverse_one100) + length (natural_sum) + length(natural_num2)
+ten_11dtps 
+
+#12
+{x <- 0+ x+ 5+}
+
+#13 set vectorname score
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75,
+           75, 77.)
+score
+score2 <- score[2]
+score3 <- score[3]
+score2
+score3
+#14
+vector1 <- c(1,2,NA,4,NA,6,7)
+
+#14a
+print(vector1,na.print="999")
+
+#the NA change to "999"
+
+#15
+
+name = readline(prompt="Input your name: ")
+
+age = readline(prompt="Input your age: ")
+
+print(paste("My name is",name, "and I am",age ,"years old."))
+print(R.version.string)
+
+
+
+
