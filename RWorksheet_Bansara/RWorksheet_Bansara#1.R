@@ -105,7 +105,7 @@ ten_11dtps
 #12
 {x <- 0+ x+ 5+}
 
-#it is error because of the plus sign after the number 5 and it lack proper context and structure.
+#it is error because of the plus sign after the number 5 and it lacks proper context and structure.
 #the statement should be:
 # {
 #   x <- 0
