@@ -57,23 +57,8 @@ one_onethous <- seq(1,1000)
 one_onethous
 
 #a. how many data points from 8.1 to 8.4
-#8.1a data points
-datapts_1 <- length(one_100)
-datapts_1
 
-#8.2a data points
-datapts_2 <- length(twenty_sixty)
-datapts_2
-
-#8.3a data points
-datapts_3 <- length(twentysixty_mean)
-datapts_3 
-
-#8.4a data points
-datapts_4 <- length(fifty1_nine1)
-datapts_4
-
-#overall data points from 8.1 to 8.4
+#b.code of overall data points from 8.1 to 8.4
 overall_dtps <- length(one_100) + length(twenty_sixty) + length(twentysixty_mean) + length(fifty1_nine1)
 overall_dtps
 
