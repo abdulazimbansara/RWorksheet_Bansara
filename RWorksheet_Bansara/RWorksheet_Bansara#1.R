@@ -33,6 +33,8 @@ age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29,
 newdatavec <- datavec * 2
 newdatavec
 
+#8 Generate a sequence for the following scenario
+
 #8.1 integers from 1 to 100
 one_100 <- seq(1,100)
 one_100
@@ -71,6 +73,10 @@ datapts_3
 datapts_4 <- length(fifty1_nine1)
 datapts_4
 
+#overall data points from 8.1 to 8.4
+overall_dtps <- length(one_100) + length(twenty_sixty) + length(twentysixty_mean) + length(fifty1_nine1)
+overall_dtps
+
 #8.5c maximum points until 10
 nmax <- seq (1,10)
 nmax2 <- max(nmax)
@@ -99,6 +105,13 @@ ten_11dtps
 #12
 {x <- 0+ x+ 5+}
 
+#it is error because of the plus sign after the number 5 and it lack proper context and structure.
+#the statement should be:
+# {
+#   x <- 0
+#   x <- x + 5
+# }
+
 #13 set vectorname score
 score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75,
            75, 77.)
@@ -123,7 +136,6 @@ age = readline(prompt="Input your age: ")
 
 print(paste("My name is",name, "and I am",age ,"years old."))
 print(R.version.string)
-
 
 
 
