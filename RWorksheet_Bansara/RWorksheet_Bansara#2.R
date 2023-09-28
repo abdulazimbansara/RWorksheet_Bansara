@@ -56,7 +56,46 @@ seq3_2 #the second element -2 was changed into 0.
 #a Create a data frame for month, price per liter (php) and purchase-quantity (liter). Write the R scripts and its output.
 dieselfuel <- data.frame(
   Month = c("Jan","Feb","March","Apr","May","June"),
-  Price per liter(PhP) = c(52.50,57.25,60.00,65.00,74.25,54.00),
-  Purchase-quantity(Liters) = c(25,30,40,50,10,45)
+  Price_per_liter = c(52.50,57.25,60.00,65.00,74.25,54.00),
+  Purchase_quantity = c(25,30,40,50,10,45)
 )
 dieselfuel
+
+#b What is the average fuel expenditure of Mr. Cruz from Jan to June?
+average_fuel <- weighted.mean(dieselfuel$Price_per_liter,dieselfuel$dieselfuelPurchase_quantity)
+average_fuel
+
+#7
+#7a
+
+#7b and c
+data <- c(length(rivers), sum(rivers), mean(rivers), median(rivers), var(rivers),
+          sd(rivers), min(rivers), max(rivers))
+data
+
+#8
+#8a
+forbesranking <- data.frame(
+  powerranking = c( 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25),
+  celebrityname = c("Tom Cruise","Rolling Stones","Oprah Winfrey","U2","Tiger Woods","Steven Spielberg","Howard Stern","50 cent","Cast of the Sopranos","Dan Brown","Bruce Springsteen","Donald Trump","Muhammad Ali","Paul mcCartney","George Lucas","Elton John","David Letterman","Phil Mickelson","J.K. Rowling","Bradd Pitt","Peter Jackson","Dr. Phil McGraw","Jay Lenon","Celine Dion","Kobe Bryant"),
+  pay = c(67,90,225,110,90,332,302,41,52,88,55,44,55,40,233,34,40,47,75,25,39,45,32,40,31)
+
+)
+forbesranking
+
+#8b
+powerranking[19] <- 15
+newPower_Ranking <- powerranking
+newPower_Ranking
+
+pay[19] <- 90
+newpay <- pay
+newpay
+
+#8cCreate an excel file from the table above and save it
+
+write.csv(newPower_Ranking,file = "PowerRanking.csv",row.names = TRUE)
+
+csvcelebrityname <- read.csv(file="PowerRanking.csv",header = T
+                             stringsAsFactors = F, sep =",")
+csvcelebrityname
