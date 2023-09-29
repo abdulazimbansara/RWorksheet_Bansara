@@ -94,8 +94,61 @@ newpay
 
 #8cCreate an excel file from the table above and save it
 
-write.csv(newPower_Ranking,file = "PowerRanking.csv",row.names = TRUE)
+powerranking = read.csv('/cloud/project/PowerRanking.csv')
+powerranking
 
-csvcelebrityname <- read.csv(file="PowerRanking.csv",header = T
-                             stringsAsFactors = F, sep =",")
-csvcelebrityname
+#d Access the rows 10 to 20 and save it as Ranks.RData.
+Accesspowerranking = powerranking[c(10:20),]
+Accesspowerranking
+
+#its output is the information from the 10-20 rows
+
+#9 Download the Hotels-Vienna https://tinyurl.com/Hotels-Vienna
+
+#9a import
+library(readxl)
+Data_hotel <- read_excel("hotels-vienna.xlsx")
+Data_hotel
+View(Data_hotel)
+
+#9b How many dimensions does the dataset have?
+Dimension <- dim(Data_hotel)
+Dimension
+
+#9c Select columns country, neighbourhood,price, stars, accomodation_type, and ratings.
+colnames(Data_hotel)
+Column_1 <- Data_hotel[,c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+View(Column_1)
+
+#9d Save
+save(Column_1,file="new.RData")
+View(Column_1)
+
+#9e Display the first six rows and last six rows of the new.RData.
+load("new.RData")
+Column_1
+
+Headsix <- head(Column_1)
+Tailsix <- tail(Column_1)
+View(Headsix)
+View(Tailsix)
+
+#10 Create a list of ten (10) vegetables you ate during your lifetime. If none, just list down.
+
+#10a
+Vegetableslist <- list("Potato","Cabbage","Pumpkin","Cucumber","Carrots",
+                   "Sweet Potato","Corn","Eggplant","Bell Pepper","Letuce")
+Vegetableslist
+
+#10b Add 2 additional vegetables after the last vegetables
+NewVegeList <- append(Vegetableslist,c("Okra","Bitter gourd"))
+NewVegeList
+
+#10c Add 4 additional vegetables after index 5. How many datapoints does your vegetable list have?
+Newaddvege <- append(NewVegeList,c("Zucchini","Cauliflower","Radish","Celery"),after = 5)
+Newaddvege
+length(Newaddvege)
+
+#10d Remove the vegetables in index 5, 10, and 15. How many vegetables were left?
+Newvege_2 <- Newaddvege[-c(5, 10, 15)]
+Newvege_2 #the are 13 vegetables left
