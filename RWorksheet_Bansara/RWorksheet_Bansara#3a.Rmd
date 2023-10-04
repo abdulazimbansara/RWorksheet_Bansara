@@ -1,0 +1,84 @@
+---
+title: "RWorksheet_Bansara#3a"
+author: "Abdul Azim Bansara"
+date: "2023-10-04"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+#1
+LETTERS
+letters
+
+#Based on the above vector LETTERS:
+#1a You need to produce a vector that contains the first 11 letters.
+Letter11 <- LETTERS[1:11]
+Letter11
+#1b Produce a vector that contains the odd numbered letters.
+
+Letterodd <- letters[seq(1,length(letters),by=2)]
+Letterodd
+
+#1c Produce a vector that contains the vowels
+LetterVowel <- c("A","E","I","O","U")
+LetterVowel
+
+#Based on the above vector letters:
+
+#1d Produce a vector that contains the last 5 lowercase letters.
+letterlast5 <- letters[22:26]
+letterlast5
+
+#1e Produce a vector that contains letters between 15 to 24 letters in lowercase.
+
+letters15_24 <- letters[16:23]
+letters15_24
+
+
+#2 Create a vector(not a dataframe) with the average temperatures in April for Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island, and Davao City. The average temperatures in Celcius are 42, 39, 34, 34, 30, and 27 degrees.
+
+averagetemp <- c(42,39,34,34,30,27) 
+averagetemp
+
+#2a
+Cityvec <- c("Tuguegarao City", "Manila","Iloilo City","Tacloban","Samal Island","Davao City")
+Cityvec
+
+#2b
+temp <- c(42,39,34,34,30,27)
+temp
+
+#2c
+Cityscape <- data.frame(City = Cityvec, Temperature = temp)
+Cityscape  
+
+#2d
+
+
+
+
+```
