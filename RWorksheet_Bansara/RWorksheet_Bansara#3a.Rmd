@@ -9,27 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-```{r}
+``` {r name, echo = TRUE}
 #1
 LETTERS
 letters
@@ -44,7 +24,8 @@ Letterodd <- letters[seq(1,length(letters),by=2)]
 Letterodd
 
 #1c Produce a vector that contains the vowels
-LetterVowel <- c("A","E","I","O","U")
+LetterVowel <- LETTERS[c(1,5,9,15,21)]
+LetterVowel
 LetterVowel
 
 #Based on the above vector letters:
@@ -55,7 +36,7 @@ letterlast5
 
 #1e Produce a vector that contains letters between 15 to 24 letters in lowercase.
 
-letters15_24 <- letters[16:23]
+letters15_24 <- letters[15:24]
 letters15_24
 
 
@@ -73,12 +54,83 @@ temp <- c(42,39,34,34,30,27)
 temp
 
 #2c
-Cityscape <- data.frame(City = Cityvec, Temperature = temp)
+Cityscape <- data.frame(Cityvec,temp)
 Cityscape  
 
 #2d
+names(Cityscape) <- c("City","Temperature")
 
 
+#2e
+str(Cityscape)
+# it displayed the output with 6 obs. of 2 variables and the class of it.
+
+#2f
+row34 <- Cityscape[3:4,]
+row34
+
+#2g
+Hightemp <- Cityscape[which.max(Cityscape$Temperature),]
+Hightemp
+
+Lowtemp <- Cityscape[which.min(Cityscape$Temperature),]
+Lowtemp
+
+#USING MATRICES
+
+#3 and a
+
+mtrix <- matrix(c(1:8,11:14),ncol = 4, nrow = 3)
+mtrix
+
+#3b
+mtrix2 <- mtrix * 2
+mtrix2
+
+#3c
+mtrixrow2 <- mtrix[2,]
+mtrixrow2
+
+#3d
+mtrixcol34 <- mtrix2[c(1:2),c(3:4)]
+mtrixcol34
+
+#3e
+mtrixcolrow <- mtrix2[3, c(2:3)]
+mtrixcolrow
+
+#3f
+mtrixcol4 <- mtrix2[,4]
+mtrixcol4
+
+#3g
+dimnames(mtrix2) <- list(c("isa","dalawa","tatlo"),c("uno","dos","tres","quatro"))
+
+
+#3h
+mtrix
+dim(mtrix) <- c(6,2)
+mtrix
+
+#USING ARRAYS
+
+#4 An array contains 1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1
+
+#4a
+arraynum <- array(c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1),c(2,4,3))
+arraynum
+
+#4b
+dim(arraynum)
+
+#4c
+colnames(arraynum) <- c("A","B","C","D")
+arraynum
+
+rownames(arraynum) <- c("a","b")
+arraynum
+
+dimnames(arraynum)[[3]] <- c("1st-Dimensional Array","2nd-Dimensional Array","3rd-Dimensional Array")
 
 
 ```
