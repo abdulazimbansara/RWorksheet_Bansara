@@ -1,0 +1,148 @@
+---
+title: "RWorksheet3b"
+author: "Abdul Azim Bansara"
+date: "2023-10-11"
+output: pdf_document
+---
+
+
+```{r}
+#1a
+
+household <- data.frame(
+  Respondents = c(1:20),
+  Sex = c("Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Male","Female"),
+  FatherOccupation = c("Farmer","Others","Others","Others","Farmer","Driver","Others","Farmer","Farmer","Farmer","Others","Driver","Farmer","Others","Others","Farmer","Others","Farmer","Driver","Farmer"),
+  PersonatHome = c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6),
+  Siblingsatschool = c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2),
+  Typeshouse = c("Wood","Semi-Concrete","Concrete","Wood","Wood","Concrete","Concrete","Wood","Semi-Concrete","Concrete","Semi-Concrete","Concrete","Semi-Concrete","Semi-Concrete","Concrete","Concrete","Concrete","Concrete","Concrete","Semi-Concrete")
+  
+)
+household
+
+#1b Describe the data. Get the structure or the summary of the data
+str(household)
+
+#1c
+
+mean_siblings <- mean(household$Siblingsatschool)
+mean_siblings
+mean_siblings == 5
+#No because the mean is 2.95
+
+#1d
+first2rows <- household[1:2, ]
+first2rows
+
+#1e
+extract35 <- household[c(3,5),c(2,4)]
+extract35
+
+#1f
+types_houses <- household$Typeshouse
+types_houses
+
+#1g
+malefarmers <- household[household$Sex == "Male" & household$FatherOccupation == "Farmer", ]
+malefarmers
+#there are no male respondents that their father's occupation is a farmer
+
+
+#1h
+femalegor5s <- household[household$Sex == "Female" & household$Siblingsatschool >= 5, ]
+
+femalegor5s
+
+
+#2
+df = data.frame(Ints = integer(),
+                Doubles = double(),
+                Characters = character(),
+                Logicals = logical(),
+                Factors = factor(),
+                stringsAsFactors = FALSE)
+
+print("Structure of the empty dataframe:")
+print(str(df))
+#2a 
+#the data frame is empty because there is 0 object in the output
+
+#3
+HouseholdData <- data.frame(
+  Respondents = c(1:10),
+  Sex = c("Male", "Female", "Female", "Male", "Male", "Female", "Female", "Male", "Female", "Male"),
+  FatherOccupation = c("Farmer", "Driver", "Others", "Others", "Farmer", "Driver", "Driver", "Others", "Farmer", "Others"),
+  PersonatHome = c(5, 7, 3, 8, 6, 4, 4, 2, 11, 6),
+  Siblingsatschool = c(2, 3, 0, 5, 2, 3, 1, 2, 6, 2),
+  Typeshouse = c("Wood", "Congrete", "Congrete", "Wood", "Semi-Congrete", "Semi-Congrete", "Wood", "Semi-Congrete", "Semi-Congrete", "Congrete")
+)
+HouseholdData
+
+#create a.csv file 
+write.csv(HouseholdData, file = "HouseholdData.csv", row.names = FALSE)
+
+#3a 
+imported_household <- read.csv("HouseholdData.csv")
+imported_household
+
+#3b
+imported_household$Sex <- factor(imported_household$Sex, levels = c("Male", "Female"))
+imported_household$Sex <- as.integer(imported_household$Sex)
+
+#3c
+imported_household$Typeshouse <- factor(imported_household$Typeshouse)
+imported_household$Typeshouse <- as.integer(factor(imported_household$Typeshouse, levels = c("Wood", "Congrete", "Semi-Congrete"), labels = c(1, 2, 3)))
+
+
+
+#3d
+imported_household$FatherOccupation <- as.integer(factor(imported_household$FatherOccupation, levels = c("Farmer","Driver","Others"), labels = c(1,2,3)))
+
+#3e
+femalerespo <- imported_household[imported_household$Sex == 2 & imported_household$FatherOccupation == 2, ]
+femalerespo
+
+#3f
+greaterthan5 <- imported_household[imported_household$Siblingsatschool>=5, ]
+greaterthan5
+
+
+#4 Interpret the graph.
+# on July 14, the negative sentiments were more than the positive and neutral tweets.
+# on July 15, the negative sentiments were 4000 count and the other sentiment increases too but not higher than the negative sentiment.
+# on July 17, the negative sentiments decreases as well as the other sentiments.
+# on July 18, the negative sentiments are the same as yesterday and the other sentiments is slightly increases.
+# on July 20, all the sentiments decreases
+# on July 21, the negative sentiments highly increases again but not the same in the July 15th and the other sentiment were increases highly too.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
