@@ -1,0 +1,91 @@
+---
+title: "RWorksheet#4a"
+author: "Abdul Azim Bansara"
+date: "2023-10-25"
+output: pdf_document
+---
+
+```{r}
+#1
+
+household_data <- data.frame(
+      Shoesize = c(6.5,9.0,8.5,8.5,10.5,7.0,9.5,9.0,13.0,7.5,10.5,8.5,12.0,10.5,13.0,11.5,8.5,5.0,10.0,6.5,7.5,8.5,10.5,8.5,10.5,11.0,9.0,13.0),
+      Height = c(66.0,68.0,64.5,65.0,70,64.0,70.0,71.0,72.0,64.0,74.5,67.0,71.0,71.0,77.0,72.0,59.0,62.0,72.0,66.0,64.0,67.0,73.0,69.0,72.0,70.0,69.0,70.0),
+      Gender = c("F","F","F","F","M","F","F","F","M","F","M","F","M","M","M","M","F","F","M","F","F","M","M","F","M","M","M","M")
+)
+household_data
+
+#1a the male's height and shoe size is higher than the female's height and weight
+
+#1b
+Male_sh <- subset(household_data, Gender == 'M')
+
+Female_sh <- subset(household_data, Gender == 'F')
+
+#1c
+mean_sh <- mean(household_data$Shoesize &household_data$Height)
+mean_sh
+
+
+
+#1d Is there a relationship between shoe size and height? Why?
+# Yes, because if your height is small, then your shoe size is small. And if your height is big then your shoe size is big too.
+
+#2
+Month <- c("March","April","January","November","January",
+"September","October","September","November","August",
+"January","November","November","February","May","August","July","December","August","August","September","November","February","April")
+factor_months_vector <- factor(Month)
+factor_months_vector
+
+#3
+summary(Month)
+summary(factor_months_vector)
+# the results display how many the months that put in the  vector and display how many of the same months in the vector. it also display their data type.
+
+#4
+Direction <- c("East","West","North")
+Frequency <- c(1,4,3)
+
+factor_direc <- factor(Direction)
+factor_direc
+
+factor_freq <- factor(Frequency)
+factor_freq
+
+new_order_data <- factor(factor_direc,levels = c("East","West","North"))
+print(new_order_data)
+
+new_order_data2 <- factor(factor_freq,levels = c(1,4,3))
+print(new_order_data2)
+
+#5a
+Exceldata <- read.csv("import_march.csv")
+Exceldata
+
+#5b
+View(Exceldata)
+
+#6
+number_input <- readline(prompt="Enter number from 1 to 50:
+                         ")
+if(number_input>50){
+  print("The number is beyond the range of 1 to 50")
+}else{
+  print("TRUE")
+}
+
+#7
+
+
+
+
+
+
+
+
+
+
+
+
+```
