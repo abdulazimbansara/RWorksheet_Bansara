@@ -1,0 +1,94 @@
+---
+title: "RWorksheet4b"
+author: "Abdul Azim Bansara"
+date: "2023-11-08"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1.
+```{r}
+VectorA <- c(1,2,3,4,5)
+matrixa <- matrix(VectorA, nrow=5, ncol=5)
+
+Vector0 <- c(0)
+matrix0 <- matrix(0, nrow=5,ncol=5)
+
+for(i in length(VectorA)){
+  matrix0[i,] <- abs(VectorA-VectorA[i])
+}
+print(matrix0)
+
+
+```
+\
+2.
+```{r}
+
+for(i in 1:5){
+  starneww <- rep("*",i)
+  print(starneww)
+}
+
+```
+\
+3.
+```{r}
+yournum <- as.numeric(readline("Enter the starting number for fibonacci sequence: "))
+
+a<-0
+b<-1
+
+cat("Fibonacci sequence starting from",yournum,"up to 500\n")
+repeat{
+  if(a>=yournum){
+    cat(a," ")
+  }
+  if(a==377){
+    break
+  }
+  numyours <- a+b
+  a <- b
+  b <- numyours
+  
+}
+cat("\n")
+
+
+
+```
+\
+4a.
+```{r}
+shoesize <- read.csv("datashoe")
+
+shoesize
+
+
+```
+
+4b.
+```{r}
+```
+
+2.
+```{r}
+```
+
+2.
+```{r}
+```
+
+2.
+```{r}
+```
+
+2.
+```{r}
+```
+
+2.
+```{r}
+```
