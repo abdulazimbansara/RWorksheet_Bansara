@@ -68,27 +68,139 @@ shoesize
 
 
 ```
-
+\
 4b.
 ```{r}
+malesub <- subset(shoesize, Gender == 'M')
+
+femalesub <- subset(shoesize, Gender == 'F')
+
+cat("Number of obsevation in male:",nrow(malesub),"\n")
+cat("Number of observation in female",nrow(femalesub),"\n")
+
+
+
+
+```
+\
+4c.
+```{r}
+gendermf <- table(shoesize$Gender)
+
+barplot(gendermf,
+        main = "The number of male and female",
+        xlab = "Gender",
+        ylab = "Count",
+        col = c("red","pink"),
+        legend.text =c("Male", "Female"))
+```
+\
+5a.
+```{r}
+familyincome <- c(60,10,5,25)
+
+pie(familyincome,labels = paste0(familyincome,"%"),
+    main = "Dela Cruz Family Expenses", col = rainbow(length(familyincome)))
+
+legend("topleft", legend = c("Food","Electricity", "Savings","Miscellaneous"),
+       fill = rainbow(length(familyincome)))
+
+```
+\
+6a.
+```{r}
+data(iris)
+
+str(iris)
+
+#there are 150 observation and 5 variables in iris dataset. there are numeric measurements in sepal.width, sepal.length, petal.width, and petal.length as well as the factor variable for the species
+
 ```
 
+6b.
+```{r}
+
+
+```
+\
+6c.
+```{r}
+
+
+
+
+
+```
+
+\
+2.
+```{r}
+```
+\
 2.
 ```{r}
 ```
 
+\
 2.
 ```{r}
 ```
 
+\
 2.
 ```{r}
 ```
 
+\
 2.
 ```{r}
 ```
 
+
+\
+2.
+```{r}
+```
+
+
+\
+2.
+```{r}
+```
+
+
+\
+2.
+```{r}
+```
+
+
+
+
+\
+2.
+```{r}
+```
+
+
+
+\
+2.
+```{r}
+```
+
+
+
+
+\
+2.
+```{r}
+```
+
+
+
+
+\
 2.
 ```{r}
 ```
