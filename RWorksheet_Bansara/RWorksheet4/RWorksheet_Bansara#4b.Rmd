@@ -38,23 +38,26 @@ for(i in 1:5){
 ```{r}
 yournum <- as.numeric(readline("Enter the starting number for fibonacci sequence: "))
 
-a<-0
-b<-1
+if(is.na(yournum || yournum < 0)){
+  cat("Please enter something")
+  }else{
+    a<-yournum
+    b<-1
+  }
+
 
 cat("Fibonacci sequence starting from",yournum,"up to 500\n")
 repeat{
-  if(a>=yournum){
-    cat(a," ")
-  }
-  if(a==377){
+  
+  num = a + b
+  if (num > 500){
     break
   }
-  numyours <- a+b
+  cat(num, " ")
   a <- b
-  b <- numyours
+  b <- num
   
 }
-cat("\n")
 
 
 
@@ -62,7 +65,7 @@ cat("\n")
 \
 4a.
 ```{r}
-shoesize <- read.csv("datashoe")
+shoesize <- read.csv("datashoe.csv")
 
 shoesize
 
@@ -119,12 +122,27 @@ str(iris)
 
 6b.
 ```{r}
+data(iris)
 
+meaniris <- colMeans(iris[, 1:4])
+
+meaniris
 
 ```
 \
 6c.
 ```{r}
+data(iris)
+
+species <- table(iris$Species)
+
+pie(species, labels = names(species),
+    col = rainbow(length(species)),
+    main = "Species Distribution")
+
+legend("topright", legend = names(species),
+       fill = rainbow(length(species)), title = "Species")
+
 
 
 
@@ -133,74 +151,151 @@ str(iris)
 ```
 
 \
-2.
+6d.
 ```{r}
+data(iris)
+
+setosa_sub <- subset(iris, Species == "setosa")
+versicolor_sub <- subset(iris, Species == "versicolor")
+virginica_sub <- subset(iris, Species == "virginica")
+
+#to display the last 6 rows of each species
+
+tail(setosa_sub)
+tail(versicolor_sub)
+tail(virginica_sub)
+
 ```
 \
-2.
+6e.
 ```{r}
+data(iris)
+
+iris$Species <- as.factor(iris$Species)
+
+colors <- c("setosa" = "#66c2a5", "versicolor" = "#fc8d62", "virginica" = "#8da0cb")
+symbols <- c("setosa" = 16, "versicolor" = 17, "virginica" = 18)
+
+plot(iris$Sepal.Length, iris$Sepal.Width, 
+     col = colors[iris$Species], 
+     pch = symbols[iris$Species],
+     main = "Iris Dataset",
+     sub = "Sepal Width and Length",
+     xlab = "Sepal Length",
+     ylab = "Sepal Width")
+
+legend("topright",legend = levels(iris$Species),col= colors, pch = symbols, title = "Species") 
+
+#6e
+#by factoring the species, it will be represents as a categories in R. 
 ```
 
 \
-2.
+7.
 ```{r}
+library(readxl)
+
+alexa <- read_excel("alexa_file.xlsx")
+
+alexa
+
 ```
 
 \
-2.
+7a.
 ```{r}
+#black
+alexa$variation <- gsub("Black Dot", "BlackDot", alexa$variation)
+alexa$variation <- gsub("Black Plus", "BlackPlus", alexa$variation)
+alexa$variation <- gsub("Black Show", "BlackShow", alexa$variation)
+alexa$variation <- gsub("Black Spot", "BlackSpot", alexa$variation)
+
+#white
+alexa$variation <- gsub("White Dot", "WhiteDot", alexa$variation)
+alexa$variation <- gsub("White Plus", "WhitePlus", alexa$variation)
+alexa$variation <- gsub("White Show", "WhiteShow", alexa$variation)
+alexa$variation <- gsub("White Spot", "WhiteSpot", alexa$variation)
+
+alexa
+
 ```
 
 \
-2.
+7b.
 ```{r}
+library("dplyr")
+
+var_TOTAL <- alexa %>%
+  count(alexa$variation)
+
+var_TOTAL
+
+save(var_TOTAL, file= "variations.RData")
+
+
+
 ```
 
 
 \
-2.
+7c.
 ```{r}
+load("variations.RData")
+var_TOTAL
+
+namevar <- var_TOTAL$`alexa$variation`
+
+alexaplot <- barplot(var_TOTAL$n,
+                     names.arg = namevar,
+                     main = "Total number of variations",
+                     xlab = "Name of Variations",
+                     ylab = "Total of each variations",
+                     col = 1:16,
+                     space = 0.1,
+                     cex.names = 0.5,
+                     las = 2)
+
+knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/vartotal.png")
+
+
+
 ```
 
 
 \
-2.
+7d.
 ```{r}
+blackvariation <- var_TOTAL[var_TOTAL$`alexa$variation`%in%c("Black", "BlackPlus" , "BlackShow" ,"BlackSpot" , "BlackDot"),]
+
+whitevariation <- var_TOTAL[var_TOTAL$`alexa$variation`%in%c("White", "WhiteDot", "WhitePlus", "WhiteShow", "WhiteSpot"),]
+
+par(mfrow = c(1,2))
+
+blackvariation
+
+blackvarplot <- barplot(height = blackvariation$n,
+                        names.arg = blackvariation$`alexa$variation`,
+                        col = c("black"),
+                        xlab = "Variation",
+                        ylab = "Count",
+                        border = "black",
+                        space = 0.5,
+                        cex.names = 0.4)
+
+
+whitevarplot <- barplot(height = whitevariation$n,
+                        names.arg = blackvariation$`alexa$variation`,
+                        col = "white",
+                        xlab = "Variation",
+                        ylab = "Count",
+                        border = "black",
+                        space = 0.5,
+                        cex.names = 0.4)
+
+knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/BlackWhitevar.png")
+
+
 ```
 
 
-\
-2.
-```{r}
-```
 
-
-
-
-\
-2.
-```{r}
-```
-
-
-
-\
-2.
-```{r}
-```
-
-
-
-
-\
-2.
-```{r}
-```
-
-
-
-
-\
-2.
-```{r}
-```
