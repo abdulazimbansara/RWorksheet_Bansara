@@ -8,19 +8,23 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 1.
 ```{r}
-VectorA <- c(1,2,3,4,5)
-matrixa <- matrix(VectorA, nrow=5, ncol=5)
-
 Vector0 <- c(0)
-matrix0 <- matrix(0, nrow=5,ncol=5)
+matrix0 <- matrix(Vector0, nrow=5,ncol=5)
 
-for(i in length(VectorA)){
-  matrix0[i,] <- abs(VectorA-VectorA[i])
+matrix0
+
+VectorA <- c(1,2,3,4,5)
+matrixa <- matrix(VectorA, nrow= 5, ncol= 5)
+
+for (i in 1:length(VectorA)) {
+  matrix0[i, ] <- abs(VectorA - VectorA[i]  )
 }
-print(matrix0)
 
+
+print(matrix0)
 
 ```
 \
@@ -36,29 +40,31 @@ for(i in 1:5){
 \
 3.
 ```{r}
-yournum <- as.numeric(readline("Enter the starting number for fibonacci sequence: "))
+yournum <- as.integer(readline("Enter the starting Fibonacci sequence number: "))
 
-if(is.na(yournum || yournum < 0)){
-  cat("Please enter something")
-  }else{
-    a<-yournum
-    b<-1
-  }
-
-
-cat("Fibonacci sequence starting from",yournum,"up to 500\n")
-repeat{
+if(is.na(yournum || yournum < 0)) {
+  cat("Enter something else")
+} else {
   
-  num = a + b
+inputnum <- yournum
+a <- inputnum
+b <- 0
+
+
+cat("Fibonacci sequence starting from", inputnum, ":\n")
+
+repeat {
+  num <- a + b
   if (num > 500){
     break
   }
   cat(num, " ")
   a <- b
   b <- num
-  
 }
 
+cat("\n")
+}
 
 
 ```
@@ -255,9 +261,10 @@ alexaplot <- barplot(var_TOTAL$n,
                      cex.names = 0.5,
                      las = 2)
 
-knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/vartotal.png")
+png("alexaplot.png")
+dev.off()
 
-
+knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/alexaplot.png")
 
 ```
 
@@ -265,35 +272,38 @@ knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/vartotal.
 \
 7d.
 ```{r}
-blackvariation <- var_TOTAL[var_TOTAL$`alexa$variation`%in%c("Black", "BlackPlus" , "BlackShow" ,"BlackSpot" , "BlackDot"),]
-
-whitevariation <- var_TOTAL[var_TOTAL$`alexa$variation`%in%c("White", "WhiteDot", "WhitePlus", "WhiteShow", "WhiteSpot"),]
+library(RColorBrewer)
 
 par(mfrow = c(1,2))
 
-blackvariation
 
-blackvarplot <- barplot(height = blackvariation$n,
-                        names.arg = blackvariation$`alexa$variation`,
-                        col = c("black"),
-                        xlab = "Variation",
-                        ylab = "Count",
-                        border = "black",
+blackvarplot <- barplot(height = c(261,270,265,241,516), 
+                        names.arg = c("Black","BlackPlus","BlackShow","BlackSpot","BlackDot"), main = "Black Variations",
+                        col = 1:5,
                         space = 0.5,
-                        cex.names = 0.4)
-
-
-whitevarplot <- barplot(height = whitevariation$n,
-                        names.arg = blackvariation$`alexa$variation`,
-                        col = "white",
                         xlab = "Variation",
-                        ylab = "Count",
-                        border = "black",
+                        ylab = "Count")
+
+png("blackvarplot.png")
+dev.off()
+
+knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/blackvarplot.png")
+
+
+whitevarplot <- barplot(height = c(91,184,78,85,109), 
+                        names.arg = c("White", "WhiteDot", "WhitePlus", "WhiteShow", "WhiteSpot"),
+                        main = "White Variations",
                         space = 0.5,
-                        cex.names = 0.4)
+                        col = 6:10,
+                        xlab = "Variation",
+                        ylab = "Count",)
 
-knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/BlackWhitevar.png")
 
+
+png("whitevarplot.png")
+dev.off()
+
+knitr::include_graphics("/cloud/project/RWorksheet_Bansara/RWorksheet4/whitevarplot.png")
 
 ```
 
