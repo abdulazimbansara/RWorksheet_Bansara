@@ -22,7 +22,7 @@ mpgdata <- read.csv("mpg.csv")
 
 1b. Which variables from mpg dataset are categorical?
 ```{r}
-str(mpg)
+str(mpgdata)
 
 
 
@@ -80,17 +80,6 @@ print(manumod)
 2b. Graph the result by using plot() and ggplot(). Write the codes and its result.
 ```{r}
 
-plot(manumod$manufacturer, manumod$uniquemodel,
-     main = "Number of Unique Models by Manufacturer",
-     xlab = "Manufacturer",
-     ylab = "Number of Unique Models",
-     col = "skyblue",
-     names.arg = manumod$manufacturer,
-     las = 2, # Rotate x-axis labels for better readability
-     cex.names = 0.7)
-
-
-
 #ggplot
 library(ggplot2)
 ggplot(manumod, aes(x=manufacturer,y = uniquemodel))+
@@ -108,10 +97,11 @@ ggplot(manumod, aes(x=manufacturer,y = uniquemodel))+
 
 2a.What does ggplot(mpg, aes(model, manufacturer)) + geom_point() show?
 ```{r}
+library(ggplot2)
 ggplot(mpg, aes(model, manufacturer)) + geom_point()
 
 # it shows the points where model and manufacturer are.
--
+
 ```
 
 
@@ -395,11 +385,11 @@ var_ratings <-  alexafile %>%
   group_by(variation)%>%
   summarise(avearage_rating = mean(rating, na.rm = TRUE))
 
+max_rating <- max(var_ratings$average_rating, na.rm = TRUE)
 
-highrate <- var_ratings %>%
- filter(average_rating  == max(average_rating)) %>%
-  pull(variation)
+highrate <- alexafile %>%
+  filter(rating == max_rating)
+print(highrate)
 
-cat("The Variations that got the highest in rating is:",highrate)
 ```
 
